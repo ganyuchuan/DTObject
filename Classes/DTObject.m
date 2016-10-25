@@ -42,7 +42,7 @@ static NSMutableDictionary *AllClassReplacedPropertyNames;
     NSSet *ignoredPropertyNames = [aClass ignoredPropertyNames];
     NSDictionary *replacedPropertyNames = [aClass replacedPropertyNames];
     
-    for (DTProperty *property in [DTObject properties]) {
+    for (DTProperty *property in [aClass properties]) {
         if (ignoredPropertyNames.count > 0 && [ignoredPropertyNames containsObject:property.name]) continue;
         
         // 获取对象属性中value的key
@@ -68,7 +68,7 @@ static NSMutableDictionary *AllClassReplacedPropertyNames;
     NSSet *ignoredPropertyNames = [aClass ignoredPropertyNames];
     NSDictionary *replacedPropertyNames = [aClass replacedPropertyNames];
     
-    for (DTProperty *property in [DTObject properties]) {
+    for (DTProperty *property in [aClass properties]) {
         if (ignoredPropertyNames.count > 0 && [ignoredPropertyNames containsObject:property.name]) continue;
         
         // 获取参数字典中value的key

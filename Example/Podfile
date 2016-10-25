@@ -1,0 +1,7 @@
+target 'DTObjectExample' do
+	pod 'DTObject', :path => "../"
+end
+
+target 'DTObjectExampleTests' do
+	pod 'DTObject', :path => "../"
+end

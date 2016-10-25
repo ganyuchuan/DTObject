@@ -16,7 +16,7 @@
 
 - (instancetype)initWithObjcProperty:(objc_property_t)property {
     if (self = [super init]) {
-        NSAssert(property == nil, @"param not nil");
+        NSAssert(property, @"param not nil");
         
         // 属性名
         _name = @(property_getName(property));
