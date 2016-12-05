@@ -25,7 +25,21 @@ typedef NS_ENUM(NSUInteger, DTPropertyDataType) {
 @property (nonatomic, readonly) Class dataTypeClass;
 @property (nonatomic, readonly) BOOL isFoundationClass;
 
+/*!
+ *  快速构造DTProperty实例对象
+ *
+ *  @param property objc_property_t结构体
+ *
+ *  @return DTProperty对象
+ */
 + (instancetype)propertyWithObjcProperty:(objc_property_t)property;
+/*!
+ *  初始化
+ *
+ *  @param property property objc_property_t结构体
+ *
+ *  @return DTProperty对象
+ */
 - (instancetype)initWithObjcProperty:(objc_property_t)property;
 
 @end
