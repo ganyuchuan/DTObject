@@ -55,7 +55,7 @@ static NSMutableDictionary *AllClassReplacedPropertyNames;
         if (value == nil) continue;
         
         // 使用KVC进行赋值
-        if (property.isFoundationClass) [keyValues setObject:value forKey:key];
+        if (property.kvcEnable) [keyValues setObject:value forKey:key];
     }
     
     return [keyValues copy];
@@ -81,7 +81,7 @@ static NSMutableDictionary *AllClassReplacedPropertyNames;
         if (value == nil) continue;
         
         // 使用KVC进行赋值
-        if (property.isFoundationClass) [self setValue:value forKey:property.name];
+        if (property.kvcEnable) [self setValue:value forKey:property.name];
     }
 }
 

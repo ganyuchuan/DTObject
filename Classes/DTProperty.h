@@ -24,6 +24,7 @@ typedef NS_ENUM(NSUInteger, DTPropertyDataType) {
 @property (nonatomic, readonly) DTPropertyDataType dataType;
 @property (nonatomic, readonly) Class dataTypeClass;
 @property (nonatomic, readonly) BOOL isFoundationClass;
+@property (nonatomic, readonly) BOOL kvcEnable;
 
 /*!
  *  快速构造DTProperty实例对象

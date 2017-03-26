@@ -29,9 +29,11 @@
         
         if ([_code isEqualToString:@"@"]) {
             _dataType = DTPropertyDataTypeId;
+            _kvcEnable = YES;
         }
         else if ([_code isEqualToString:@"*"]) {
             _dataType = DTPropertyDataTypePointer;
+            _kvcEnable = YES;
         }
         else if ([_code isEqualToString:@"i"] ||    // int
                  [_code isEqualToString:@"s"] ||    // short
@@ -41,7 +43,6 @@
                  [_code isEqualToString:@"c"] ||    // chat
                  [_code isEqualToString:@"b"]) {    // bool
             _dataType = DTPropertyDataTypeBase;
-            
         }
         else if ([_code isEqualToString:@"^{objc_ivar=}"] ||    // ivar指针
                  [_code isEqualToString:@"^{objc_method=}"] ||  // 方法
@@ -54,13 +55,24 @@
         if (_code.length > 3 && [_code hasPrefix:@"@\""]) {
             _code = [_code substringWithRange:NSMakeRange(2, _code.length - 3)];
             _dataTypeClass = NSClassFromString(_code);
-            _isFoundationClass = [NSObject class] || [_dataTypeClass isSubclassOfClass:[NSObject class]];
+            _isFoundationClass = _dataTypeClass == [NSObject class] || [_dataTypeClass isSubclassOfClass:[NSObject class]];
+            _kvcEnable = [[DTProperty jsonFoundationObjectsClass] containsObject:_dataTypeClass];
         }
     }
     
     return self;
 }
 
-
++ (NSSet *)jsonFoundationObjectsClass {
+    return [NSSet setWithObjects:
+            [NSString class],
+            [NSMutableString class],
+            [NSNumber class],
+            [NSArray class],
+            [NSMutableArray class],
+            [NSDictionary class],
+            [NSMutableDictionary class],
+            [NSNull class], nil];
+}
 
 @end
